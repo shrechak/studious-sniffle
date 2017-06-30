@@ -1,0 +1,8 @@
+---
+- hosts: all
+  tasks:
+  - name: Clone ansible module to particular location
+    git:
+      repo: 'https://github.com/ansible/ansible.git'
+      dest: /tmp/ansible
+      version: v2.3.2.0-0.1.rc1

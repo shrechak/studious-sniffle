@@ -1,0 +1,12 @@
+---
+- hosts: all
+  tasks:
+  - name: copy nginx configuration file
+    template:
+      src: ../templates/nginx.conf.j2
+      dest: /etc/nginx.conf
+      owner: root
+      group: root
+      mode: u=rw,g=r,o=r
+    notify: restart nginx
+    tags: [nginx, config]
