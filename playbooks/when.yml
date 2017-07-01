@@ -1,0 +1,12 @@
+---
+- hosts: all
+  tasks:
+  - name: "Testing when statement"
+    debug: msg="Debian"
+    when: ansible_os_family == "Debian"
+
+  - name: "Testing loop constructs"
+    debug: msg="{{ item }}"
+    with_items:
+      - testuser1
+      - testuser2
