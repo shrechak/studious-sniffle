@@ -2,7 +2,7 @@
 - hosts: all
   tasks:
   - name: Create a cron job
-    - cron:
+    cron:
       name: "check dirs"
       minute: "0"
       hour: "5,2"

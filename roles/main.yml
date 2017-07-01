@@ -1,0 +1,3 @@
+---
+- name: Debuggging from roles
+  debug: msg="Executing role"
