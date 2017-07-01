@@ -1,0 +1,27 @@
+---
+- hosts: all
+  sudo: True
+  # gather_facts: True
+ 
+  vars:
+    http_port: 80
+
+  tasks:
+
+  - name: "Print variable value"
+    debug: msg="{{ http_port }}"
+
+  - name: capture output of whoami command
+    command: whoami
+    register: login
+
+  - debug: var=login
+
+  - name: capture output of id command
+    command: id -un
+    register: login
+
+  - debug:  msg="Logged in as user {{ login.stdout }}"
+
+  # - debug: var=ansible_distribution
+
