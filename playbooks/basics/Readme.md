@@ -1,0 +1,1 @@
+The basics.yml file has examples of some essential ansible commands. Within each task of the playbook are indicted some *TODOs* for you to try out.

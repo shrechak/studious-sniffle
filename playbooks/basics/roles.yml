@@ -1,0 +1,5 @@
+---
+- hosts: all
+  tasks:
+  - include: ../roles/somerole/tasks/main.yml
+  

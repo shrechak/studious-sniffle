@@ -1,0 +1,45 @@
+---
+- hosts: all
+  tasks:
+
+  # TODO: Debug facts gathered from the server machine
+  - name: Echo some message
+    debug: msg="message"
+
+
+  # TODO: Ensure you backup the conf file and create a new nginx conf to run on a different 
+  # port and run nginx playbook - nginx.yml
+  - name: Instantiating a file from a template
+    template:
+      src: ../templates/nginx.conf.j2
+      dest: /etc/nginx.conf
+      owner: root
+      group: root
+      mode: u=rw,g=r,o=r
+    notify: restart nginx
+    
+  # TODO: Update cached packages for Linux servers 
+  - name: "Testing when statement"
+    debug: msg="Debian"
+    when: ansible_os_family == "Debian"
+
+  # TODO: Install hadoop environment dependencies
+  - name: "Testing loop constructs"
+    debug: msg="{{ item }}"
+    with_items:
+      - testuser1
+      - testuser2
+
+  #
+  - name: Create a cron job
+    cron:
+      name: "check dirs"
+      minute: "0"
+      hour: "5,2"
+      job: "ls -alh > /dev/null"
+
+  # Instead of cloning repository create a shallow clone till the last 2 commits
+  - name: Clone ansible module to particular location
+    git:
+      repo: 'https://github.com/shrechak/studious-sniffle.git'
+      dest: /tmp/ansible
